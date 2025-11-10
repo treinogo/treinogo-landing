@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:3001/api';
+import { config } from '../config/env';
+
+const API_BASE_URL = config.api.baseUrl;
 
 export interface AuthResponse {
   message: string;

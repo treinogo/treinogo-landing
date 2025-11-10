@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import { apiService } from "../lib/api";
+import { config } from "../config/env";
 import backgroundImage from "figma:asset/d1611b9d124f41b85210b99345ff94882fce3d58.png";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
@@ -53,7 +54,7 @@ export function SignUp({ onSuccess, onBackToLogin }: SignUpProps) {
       });
       
       // Redirect to coach dashboard
-      window.location.href = 'http://localhost:5175'; // URL do coach dashboard
+      window.location.href = config.urls.coachDashboard;
     } catch (error) {
       console.error('Registration error:', error);
       alert('Erro no cadastro. Tente novamente.');

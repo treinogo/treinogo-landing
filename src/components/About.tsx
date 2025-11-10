@@ -1,6 +1,7 @@
 import { Target, Heart, Zap, Users, Award, TrendingUp, ArrowLeft, CheckCircle } from "lucide-react";
 import { Button } from "./ui/button";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { config } from "../config/env";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
 interface AboutProps {
@@ -68,7 +69,7 @@ export function About({ onBack, onContactClick }: AboutProps) {
             <div className="relative">
               <div className="aspect-square rounded-3xl overflow-hidden">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1759476532444-fa17a7131941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uZXIlMjB0cmFpbmluZyUyMG91dGRvb3J8ZW58MXx8fHwxNzYyMTgxMDQzfDA&ixlib=rb-4.1.0&q=80&w=1080"
+                  src={`${config.services.unsplashBaseUrl}/photo-1759476532444-fa17a7131941?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uZXIlMjB0cmFpbmluZyUyMG91dGRvb3J8ZW58MXx8fHwxNzYyMTgxMDQzfDA&ixlib=rb-4.1.0&q=80&w=1080`}
                   alt="Nossa história"
                   className="w-full h-full object-cover"
                 />

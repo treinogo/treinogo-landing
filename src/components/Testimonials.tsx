@@ -1,4 +1,5 @@
 import { Star, Quote } from "lucide-react";
+import { config } from "../config/env";
 
 const testimonials = [
   {
@@ -6,21 +7,21 @@ const testimonials = [
     role: "Treinador de Corrida",
     content: "O TreinoGo revolucionou minha assessoria. Consigo gerenciar 80 alunos com facilidade e o engajamento aumentou 40%.",
     rating: 5,
-    image: "https://ui-avatars.com/api/?name=Carlos+Mendes&background=3B82F6&color=fff&size=200",
+    image: `${config.services.avatarsApiUrl}/?name=Carlos+Mendes&background=3B82F6&color=fff&size=200`,
   },
   {
     name: "Ana Paula Silva",
     role: "Personal Trainer",
     content: "A plataforma é intuitiva e meus alunos adoram acompanhar os treinos pelo app. Economizo horas toda semana!",
     rating: 5,
-    image: "https://ui-avatars.com/api/?name=Ana+Paula+Silva&background=8B5CF6&color=fff&size=200",
+    image: `${config.services.avatarsApiUrl}/?name=Ana+Paula+Silva&background=8B5CF6&color=fff&size=200`,
   },
   {
     name: "Roberto Alves",
     role: "Assessoria Esportiva Run Elite",
     content: "Migramos toda nossa assessoria para o TreinoGo. Os relatórios detalhados nos ajudam a tomar decisões estratégicas.",
     rating: 5,
-    image: "https://ui-avatars.com/api/?name=Roberto+Alves&background=10B981&color=fff&size=200",
+    image: `${config.services.avatarsApiUrl}/?name=Roberto+Alves&background=10B981&color=fff&size=200`,
   },
 ];
 

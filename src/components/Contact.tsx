@@ -4,6 +4,7 @@ import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { config } from "../config/env";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
 interface ContactProps {
@@ -73,8 +74,8 @@ export function Contact({ onBack }: ContactProps) {
                     <p className="text-gray-600 mb-2">
                       Resposta em até 24h úteis
                     </p>
-                    <a href="mailto:contato@treinogo.com.br" className="text-[#1C548B] hover:underline">
-                      contato@treinogo.com.br
+                    <a href={`mailto:${config.contact.email}`} className="text-[#1C548B] hover:underline">
+                      {config.contact.email}
                     </a>
                   </div>
                 </div>
@@ -89,7 +90,7 @@ export function Contact({ onBack }: ContactProps) {
                     <p className="text-gray-600 mb-2">
                       Seg a Sex, 9h às 18h
                     </p>
-                    <a href="tel:+551140028922" className="text-[#1C548B] hover:underline">
+                    <a href={`tel:${config.contact.phone}`} className="text-[#1C548B] hover:underline">
                       (11) 4002-8922
                     </a>
                   </div>
@@ -105,7 +106,7 @@ export function Contact({ onBack }: ContactProps) {
                     <p className="text-gray-600 mb-2">
                       Atendimento rápido e direto
                     </p>
-                    <a href="https://wa.me/5511999999999" className="text-[#1C548B] hover:underline">
+                    <a href={config.urls.whatsapp} className="text-[#1C548B] hover:underline">
                       (11) 99999-9999
                     </a>
                   </div>
