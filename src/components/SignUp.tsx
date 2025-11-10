@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
+import { apiService } from "../lib/api";
 import backgroundImage from "figma:asset/d1611b9d124f41b85210b99345ff94882fce3d58.png";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
@@ -37,16 +38,27 @@ export function SignUp({ onSuccess, onBackToLogin }: SignUpProps) {
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(formData.password);
   const isPasswordValid = hasLetter && hasNumber && hasSpecialChar && formData.password.length >= 8;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isPasswordValid) return;
     
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    
+    try {
+      const response = await apiService.register({
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        role: 'COACH'
+      });
+      
+      // Redirect to coach dashboard
+      window.location.href = 'http://localhost:5175'; // URL do coach dashboard
+    } catch (error) {
+      console.error('Registration error:', error);
+      alert('Erro no cadastro. Tente novamente.');
       setIsLoading(false);
-      onSuccess();
-    }, 1500);
+    }
   };
 
   const handleNext = () => {

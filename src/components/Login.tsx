@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Separator } from "./ui/separator";
+import { apiService } from "../lib/api";
 import backgroundImage from "figma:asset/d1611b9d124f41b85210b99345ff94882fce3d58.png";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
@@ -17,14 +18,27 @@ export function Login({ onSignUpClick }: LoginProps) {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate login
-    setTimeout(() => {
+    
+    try {
+      const response = await apiService.login({ email, password });
+      
+      if (response.user.role === 'COACH') {
+        // Redirect to coach dashboard with token and user data
+        const encodedToken = encodeURIComponent(response.token);
+        const encodedUser = encodeURIComponent(JSON.stringify(response.user));
+        window.location.href = `http://localhost:5176?token=${encodedToken}&user=${encodedUser}`;
+      } else {
+        alert('Acesso negado. Esta área é exclusiva para professores.');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      alert('Erro no login. Verifique suas credenciais.');
+    } finally {
       setIsLoading(false);
-      console.log("Login attempt:", { email, password });
-    }, 1500);
+    }
   };
 
   const handleGoogleLogin = () => {
