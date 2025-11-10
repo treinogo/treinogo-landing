@@ -2,6 +2,7 @@ import { Calendar, Clock, ArrowLeft, Share2, Facebook, Twitter, Linkedin, Mail, 
 import { Button } from "./ui/button";
 import { Separator } from "./ui/separator";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { config } from "../config/env";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
 interface BlogPostProps {
@@ -20,9 +21,9 @@ const blogPostsData: Record<string, any> = {
     author: {
       name: "Ricardo Santos",
       role: "Especialista em Gestão Esportiva",
-      avatar: "https://ui-avatars.com/api/?name=Ricardo+Santos&background=3B82F6&color=fff&size=200",
+      avatar: `${config.services.avatarsApiUrl}/?name=Ricardo+Santos&background=3B82F6&color=fff&size=200`,
     },
-    image: "https://images.unsplash.com/photo-1570189046794-606e8291541d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwY29hY2glMjB0cmFpbmluZ3xlbnwxfHx8fDE3NjIxMzc2NzR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: `${config.services.unsplashBaseUrl}/photo-1570189046794-606e8291541d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwY29hY2glMjB0cmFpbmluZ3xlbnwxfHx8fDE3NjIxMzc2NzR8MA&ixlib=rb-4.1.0&q=80&w=1080`,
     excerpt: "Descubra as estratégias essenciais para criar e gerenciar uma assessoria esportiva lucrativa e escalável.",
     content: [
       {
@@ -141,9 +142,9 @@ const blogPostsData: Record<string, any> = {
     author: {
       name: "Dra. Ana Paula Costa",
       role: "Médica do Esporte",
-      avatar: "https://ui-avatars.com/api/?name=Ana+Costa&background=10B981&color=fff&size=200",
+      avatar: `${config.services.avatarsApiUrl}/?name=Ana+Costa&background=10B981&color=fff&size=200`,
     },
-    image: "https://images.unsplash.com/photo-1662651800883-b784f138e9dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwYmVuZWZpdHMlMjBmaXRuZXNzfGVufDF8fHx8MTc2MjIxODAwNHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: `${config.services.unsplashBaseUrl}/photo-1662651800883-b784f138e9dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwYmVuZWZpdHMlMjBmaXRuZXNzfGVufDF8fHx8MTc2MjIxODAwNHww&ixlib=rb-4.1.0&q=80&w=1080`,
     excerpt: "Conheça os impactos positivos da corrida na saúde física, mental e qualidade de vida dos seus alunos.",
     content: [
       {
@@ -249,9 +250,9 @@ const blogPostsData: Record<string, any> = {
     author: {
       name: "Carlos Mendonça",
       role: "Consultor de Negócios Esportivos",
-      avatar: "https://ui-avatars.com/api/?name=Carlos+Mendonca&background=8B5CF6&color=fff&size=200",
+      avatar: `${config.services.avatarsApiUrl}/?name=Carlos+Mendonca&background=8B5CF6&color=fff&size=200`,
     },
-    image: "https://images.unsplash.com/photo-1744725845508-054bf3b6d80c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBidXNpbmVzcyUyMGVudHJlcHJlbmV1cnxlbnwxfHx8fDE3NjIyMTgwMDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: `${config.services.unsplashBaseUrl}/photo-1744725845508-054bf3b6d80c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHMlMjBidXNpbmVzcyUyMGVudHJlcHJlbmV1cnxlbnwxfHx8fDE3NjIyMTgwMDR8MA&ixlib=rb-4.1.0&q=80&w=1080`,
     excerpt: "Transforme sua paixão por corrida em um negócio rentável. Aprenda a precificar, divulgar e crescer.",
     content: [
       {
@@ -418,21 +419,21 @@ const relatedPosts = [
   {
     id: "retencao-alunos",
     title: "5 estratégias de retenção de alunos em assessorias esportivas",
-    image: "https://images.unsplash.com/photo-1758875568756-37a9c5c1a4f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJzb25hbCUyMHRyYWluZXIlMjBjb2FjaGluZ3xlbnwxfHx8fDE3NjIxMTgxNTR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: `${config.services.unsplashBaseUrl}/photo-1758875568756-37a9c5c1a4f2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwZXJzb25hbCUyMHRyYWluZXIlMjBjb2FjaGluZ3xlbnwxfHx8fDE3NjIxMTgxNTR8MA&ixlib=rb-4.1.0&q=80&w=1080`,
     category: "Gestão de Assessoria",
     readTime: "7 min"
   },
   {
     id: "treinar-diferentes-perfis",
     title: "Como treinar diferentes perfis de corredores na mesma assessoria",
-    image: "https://images.unsplash.com/photo-1727849027217-fa9acf71553d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwZ3JvdXAlMjBhdGhsZXRlc3xlbnwxfHx8fDE3NjIyMTgwMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: `${config.services.unsplashBaseUrl}/photo-1727849027217-fa9acf71553d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxydW5uaW5nJTIwZ3JvdXAlMjBhdGhsZXRlc3xlbnwxfHx8fDE3NjIyMTgwMDV8MA&ixlib=rb-4.1.0&q=80&w=1080`,
     category: "Treinamento",
     readTime: "9 min"
   },
   {
     id: "tecnologia-treinamento",
     title: "Tecnologia no treinamento: como apps transformam a assessoria esportiva",
-    image: "https://images.unsplash.com/photo-1713428856240-100df77350bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwdGVjaG5vbG9neSUyMGFwcHxlbnwxfHx8fDE3NjIxOTI3NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: `${config.services.unsplashBaseUrl}/photo-1713428856240-100df77350bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmaXRuZXNzJTIwdGVjaG5vbG9neSUyMGFwcHxlbnwxfHx8fDE3NjIxOTI3NDJ8MA&ixlib=rb-4.1.0&q=80&w=1080`,
     category: "Tecnologia",
     readTime: "5 min"
   }

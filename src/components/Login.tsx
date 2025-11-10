@@ -5,6 +5,7 @@ import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Separator } from "./ui/separator";
 import { apiService } from "../lib/api";
+import { config } from "../config/env";
 import backgroundImage from "figma:asset/d1611b9d124f41b85210b99345ff94882fce3d58.png";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
@@ -29,7 +30,7 @@ export function Login({ onSignUpClick }: LoginProps) {
         // Redirect to coach dashboard with token and user data
         const encodedToken = encodeURIComponent(response.token);
         const encodedUser = encodeURIComponent(JSON.stringify(response.user));
-        window.location.href = `http://localhost:5176?token=${encodedToken}&user=${encodedUser}`;
+        window.location.href = `${config.urls.coachDashboard}?token=${encodedToken}&user=${encodedUser}`;
       } else {
         alert('Acesso negado. Esta área é exclusiva para professores.');
       }
