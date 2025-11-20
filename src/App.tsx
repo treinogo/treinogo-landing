@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Hero } from "./components/Hero";
 import { Benefits } from "./components/Benefits";
 import { Pricing } from "./components/Pricing";
@@ -13,12 +13,25 @@ import { BlogPost } from "./components/BlogPost";
 import { BlogHome } from "./components/BlogHome";
 import { Contact } from "./components/Contact";
 import { About } from "./components/About";
+import { toast } from "sonner";
+import { Toaster } from "./components/ui/sonner";
 
 type PageType = "home" | "login" | "signup" | "success" | "blog-post" | "blog-home" | "contact" | "about";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<PageType>("home");
   const [currentPostId, setCurrentPostId] = useState<string>("");
+
+  useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    const message = urlParams.get('message');
+
+    if (message) {
+      toast.error(decodeURIComponent(message));
+      setCurrentPage('login');
+      window.history.replaceState({}, document.title, window.location.pathname);
+    }
+  }, []);
 
   const handleReadPost = (postId: string) => {
     setCurrentPostId(postId);
@@ -75,25 +88,28 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header
-        onLoginClick={() => setCurrentPage("login")}
-        onSignUpClick={() => setCurrentPage("signup")}
-        onAboutClick={() => setCurrentPage("about")}
-        onContactClick={() => setCurrentPage("contact")}
-        onBlogClick={() => setCurrentPage("blog-home")}
-      />
-      <main>
-        <Hero onSignUpClick={() => setCurrentPage("signup")} />
-        <Benefits />
-        <Pricing onContactClick={() => setCurrentPage("contact")} />
-        <Testimonials />
-        <Blog 
-          onReadPost={handleReadPost}
-          onViewAll={() => setCurrentPage("blog-home")}
+    <>
+      <div className="min-h-screen bg-white">
+        <Header
+          onLoginClick={() => setCurrentPage("login")}
+          onSignUpClick={() => setCurrentPage("signup")}
+          onAboutClick={() => setCurrentPage("about")}
+          onContactClick={() => setCurrentPage("contact")}
+          onBlogClick={() => setCurrentPage("blog-home")}
         />
-      </main>
-      <Footer />
-    </div>
+        <main>
+          <Hero onSignUpClick={() => setCurrentPage("signup")} />
+          <Benefits />
+          <Pricing onContactClick={() => setCurrentPage("contact")} />
+          <Testimonials />
+          <Blog
+            onReadPost={handleReadPost}
+            onViewAll={() => setCurrentPage("blog-home")}
+          />
+        </main>
+        <Footer />
+      </div>
+      <Toaster position="top-right" richColors closeButton />
+    </>
   );
 }
