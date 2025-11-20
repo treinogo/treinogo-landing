@@ -25,6 +25,19 @@ export interface LoginData {
   password: string;
 }
 
+export interface ContactData {
+  name: string;
+  email: string;
+  phone?: string;
+  subject: string;
+  message: string;
+}
+
+export interface ContactResponse {
+  success: boolean;
+  message: string;
+}
+
 class ApiService {
   private async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
     const url = `${API_BASE_URL}${endpoint}`;
@@ -95,6 +108,13 @@ class ApiService {
 
   isAuthenticated() {
     return !!this.getToken();
+  }
+
+  async submitContact(contactData: ContactData): Promise<ContactResponse> {
+    return this.request<ContactResponse>('/contact', {
+      method: 'POST',
+      body: JSON.stringify(contactData),
+    });
   }
 }
 

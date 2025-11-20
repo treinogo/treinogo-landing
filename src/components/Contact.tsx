@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Mail, Phone, MapPin, Clock, Send, MessageSquare, ArrowLeft } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
@@ -5,6 +6,8 @@ import { Textarea } from "./ui/textarea";
 import { Label } from "./ui/label";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import { config } from "../config/env";
+import { apiService } from "../lib/api";
+import { toast } from "sonner";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
 
 interface ContactProps {
@@ -12,9 +15,42 @@ interface ContactProps {
 }
 
 export function Contact({ onBack }: ContactProps) {
-  const handleSubmit = (e: React.FormEvent) => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log("Form submitted");
+    setIsLoading(true);
+
+    try {
+      const response = await apiService.submitContact({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone || undefined,
+        subject: formData.subject,
+        message: formData.message,
+      });
+
+      toast.success(response.message);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        subject: "",
+        message: "",
+      });
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast.error("Erro ao enviar mensagem. Tente novamente.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -162,6 +198,8 @@ export function Contact({ onBack }: ContactProps) {
                         id="name"
                         type="text"
                         placeholder="Seu nome"
+                        value={formData.name}
+                        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         required
                         className="mt-2"
                       />
@@ -172,6 +210,8 @@ export function Contact({ onBack }: ContactProps) {
                         id="email"
                         type="email"
                         placeholder="seu@email.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         required
                         className="mt-2"
                       />
@@ -185,6 +225,8 @@ export function Contact({ onBack }: ContactProps) {
                         id="phone"
                         type="tel"
                         placeholder="(11) 99999-9999"
+                        value={formData.phone}
+                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                         className="mt-2"
                       />
                     </div>
@@ -192,6 +234,8 @@ export function Contact({ onBack }: ContactProps) {
                       <Label htmlFor="subject">Assunto</Label>
                       <select
                         id="subject"
+                        value={formData.subject}
+                        onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                         className="mt-2 w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#1C548B]"
                         required
                       >
@@ -211,6 +255,8 @@ export function Contact({ onBack }: ContactProps) {
                       id="message"
                       placeholder="Conte-nos como podemos ajudar..."
                       rows={6}
+                      value={formData.message}
+                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                       required
                       className="mt-2"
                     />
@@ -219,9 +265,19 @@ export function Contact({ onBack }: ContactProps) {
                   <Button
                     type="submit"
                     className="w-full bg-[#1C548B] hover:bg-[#153d68] text-white group"
+                    disabled={isLoading}
                   >
-                    <Send className="mr-2 h-4 w-4" />
-                    Enviar mensagem
+                    {isLoading ? (
+                      <>
+                        <div className="w-4 h-4 mr-2 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Enviando...
+                      </>
+                    ) : (
+                      <>
+                        <Send className="mr-2 h-4 w-4" />
+                        Enviar mensagem
+                      </>
+                    )}
                   </Button>
 
                   <p className="text-gray-500 text-center">
