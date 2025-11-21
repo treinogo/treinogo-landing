@@ -1,7 +1,12 @@
+import { GoogleLogin } from "@react-oauth/google";
+
 // Environment configuration
 export const config = {
   api: {
     baseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:3001/api',
+  },
+  auth: {
+    googleClientId: import.meta.env.VITE_GOOGLE_CLIENT_ID || '182333140856-mkg2vf64hjpniplcceoqorsfm3cg6f03.apps.googleusercontent.com',
   },
   urls: {
     coachDashboard: import.meta.env.VITE_COACH_DASHBOARD_URL || 'http://localhost:5175',
