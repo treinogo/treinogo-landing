@@ -13,6 +13,7 @@ interface SignUpProps {
 }
 
 const plans = [
+  { id: "free", name: "Gratuito", price: "R$ 0,00/mês", students: "Até 9 alunos" },
   { id: "starter", name: "Starter", price: "R$ 59,90/mês", students: "Até 30 alunos" },
   { id: "assessoria", name: "Assessoria", price: "R$ 189,90/mês", students: "Até 100 alunos", popular: true },
   { id: "assessoria-full", name: "Assessoria Full", price: "R$ 289,00/mês", students: "Até 200 alunos" },
@@ -22,6 +23,8 @@ const plans = [
 export function SignUp({ onSuccess, onBackToLogin }: SignUpProps) {
   const [step, setStep] = useState(1);
   const [userType, setUserType] = useState<"student" | "trainer">("trainer");
+  const [studentType, setStudentType] = useState<"with-trainer" | "independent">("independent");
+  const [trainerCode, setTrainerCode] = useState("");
   const [selectedPlan, setSelectedPlan] = useState("assessoria");
   const [formData, setFormData] = useState({
     name: "",
@@ -72,7 +75,7 @@ export function SignUp({ onSuccess, onBackToLogin }: SignUpProps) {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-white max-w-lg">
+            <h2 className="text-[32px] font-bold text-[#14439D]">
               Comece sua jornada com o TreinoGo hoje
             </h2>
             <p className="text-blue-100 max-w-md">
@@ -218,6 +221,82 @@ export function SignUp({ onSuccess, onBackToLogin }: SignUpProps) {
                       ))}
                     </div>
                   </RadioGroup>
+                </div>
+              )}
+
+              {/* Student Type Selection (only for students) */}
+              {userType === "student" && (
+                <div className="space-y-4 pt-4">
+                  <Label className="text-gray-900">
+                    Como você quer se inscrever?
+                  </Label>
+                  <RadioGroup value={studentType} onValueChange={setStudentType}>
+                    <div className="space-y-3">
+                      <div
+                        className={`relative border-2 rounded-xl p-4 cursor-pointer transition-all ${
+                          studentType === "with-trainer"
+                            ? "border-blue-600 bg-blue-50/50"
+                            : "border-gray-200 hover:border-gray-300"
+                        }`}
+                        onClick={() => setStudentType("with-trainer")}
+                      >
+                        <div className="flex items-center gap-3">
+                          <RadioGroupItem value="with-trainer" id="with-trainer" />
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between">
+                              <Label htmlFor="with-trainer" className="text-gray-900 cursor-pointer">
+                                Com treinador
+                              </Label>
+                            </div>
+                            <p className="text-gray-600 mt-1">
+                              Inscreva-se usando o código do seu treinador
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div
+                        className={`relative border-2 rounded-xl p-4 cursor-pointer transition-all ${
+                          studentType === "independent"
+                            ? "border-blue-600 bg-blue-50/50"
+                            : "border-gray-200 hover:border-gray-300"
+                        }`}
+                        onClick={() => setStudentType("independent")}
+                      >
+                        <div className="flex items-center gap-3">
+                          <RadioGroupItem value="independent" id="independent" />
+                          <div className="flex-1">
+                            <div className="flex items-center justify-between">
+                              <Label htmlFor="independent" className="text-gray-900 cursor-pointer">
+                                Independente
+                              </Label>
+                            </div>
+                            <p className="text-gray-600 mt-1">
+                              Inscreva-se sem treinador
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </RadioGroup>
+
+                  {/* Trainer Code Input (only for students with trainer) */}
+                  {studentType === "with-trainer" && (
+                    <div className="space-y-2 pt-4">
+                      <Label htmlFor="trainerCode" className="text-gray-700">
+                        Código do treinador
+                      </Label>
+                      <Input
+                        id="trainerCode"
+                        type="text"
+                        placeholder="Digite o código do seu treinador"
+                        value={trainerCode}
+                        onChange={(e) => setTrainerCode(e.target.value)}
+                        className="h-12 border-gray-200 focus:border-blue-600"
+                        required
+                      />
+                    </div>
+                  )}
                 </div>
               )}
 

@@ -1,3 +1,5 @@
+import image_44b0cb9b2da71e7955d258db2cdfc084f51a910c from 'figma:asset/44b0cb9b2da71e7955d258db2cdfc084f51a910c.png';
+import image_f0bdb9e2e28dc31f0825219ce2348a67f0f4d882 from 'figma:asset/f0bdb9e2e28dc31f0825219ce2348a67f0f4d882.png';
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { Button } from "./ui/button";
@@ -41,7 +43,7 @@ export function Header({ onLoginClick, onSignUpClick, onAboutClick, onContactCli
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <img src={logoImage} alt="TreinoGo" className="h-8 md:h-10 w-auto" />
+            <img src={image_44b0cb9b2da71e7955d258db2cdfc084f51a910c} alt="TreinoGo" className="h-8 md:h-10 w-auto" />
           </div>
 
           {/* Desktop Navigation */}
@@ -77,7 +79,7 @@ export function Header({ onLoginClick, onSignUpClick, onAboutClick, onContactCli
               Entrar
             </Button>
             <Button
-              className="bg-[#1C548B] hover:bg-[#153d68] text-white"
+              className="bg-[rgb(236,99,39)] hover:bg-[#153d68] text-white"
               onClick={onSignUpClick}
             >
               Criar conta grátis

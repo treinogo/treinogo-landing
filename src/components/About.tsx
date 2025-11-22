@@ -50,7 +50,7 @@ export function About({ onBack, onContactClick }: AboutProps) {
               <div className="inline-block px-4 py-2 bg-[#1C548B]/10 text-[#1C548B] rounded-full mb-4">
                 Nossa História
               </div>
-              <h2 className="text-gray-900 mb-6">
+              <h2 className="text-[32px] font-bold text-[#14439D] mb-6">
                 Como tudo começou
               </h2>
               <div className="space-y-4 text-gray-600">
@@ -93,7 +93,7 @@ export function About({ onBack, onContactClick }: AboutProps) {
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-gray-900 mb-4">
+            <h2 className="text-[32px] font-bold text-[#14439D] mb-4">
               Nossos pilares
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -153,7 +153,7 @@ export function About({ onBack, onContactClick }: AboutProps) {
       <section className="py-16 md:py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-gray-900 mb-4">
+            <h2 className="text-[32px] font-bold text-[#14439D] mb-4">
               O que nos move
             </h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
@@ -209,7 +209,7 @@ export function About({ onBack, onContactClick }: AboutProps) {
       <section className="py-16 md:py-24 bg-gradient-to-br from-[#1C548B] to-[#0f3a5f] text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-white mb-4">
+            <h2 className="text-[32px] font-bold text-[#14439D] mb-4">
               TreinoGo em números
             </h2>
             <p className="text-white/90 max-w-2xl mx-auto">
@@ -244,7 +244,7 @@ export function About({ onBack, onContactClick }: AboutProps) {
           <div className="max-w-4xl mx-auto">
             <div className="bg-gradient-to-br from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12 border border-gray-100">
               <div className="text-center">
-                <h2 className="text-gray-900 mb-4">
+                <h2 className="text-[32px] font-bold text-[#14439D] mb-4">
                   Nosso compromisso com você
                 </h2>
                 <p className="text-gray-600 mb-8 max-w-2xl mx-auto">

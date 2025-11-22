@@ -26,7 +26,7 @@ export default function App() {
   };
 
   if (currentPage === "login") {
-    return <Login onSignUpClick={() => setCurrentPage("signup")} />;
+    return <Login onSignUpClick={() => setCurrentPage("signup")} onBack={() => setCurrentPage("home")} />;
   }
 
   if (currentPage === "signup") {
@@ -86,7 +86,10 @@ export default function App() {
       <main>
         <Hero onSignUpClick={() => setCurrentPage("signup")} />
         <Benefits />
-        <Pricing onContactClick={() => setCurrentPage("contact")} />
+        <Pricing 
+          onContactClick={() => setCurrentPage("contact")}
+          onSignUpClick={() => setCurrentPage("signup")}
+        />
         <Testimonials />
         <Blog 
           onReadPost={handleReadPost}

@@ -1,4 +1,4 @@
-import { Users, TrendingUp, MessageCircle, FileText, Shield } from "lucide-react";
+import { Users, TrendingUp, FileText } from "lucide-react";
 
 const benefits = [
   {
@@ -14,22 +14,10 @@ const benefits = [
     color: "green",
   },
   {
-    icon: MessageCircle,
-    title: "Comunicação integrada com alunos",
-    description: "Mantenha contato direto com seus alunos, envie feedbacks e responda dúvidas sem sair do app.",
-    color: "purple",
-  },
-  {
     icon: FileText,
     title: "Relatórios inteligentes e personalizados",
     description: "Gere relatórios completos sobre desempenho, frequência e resultados para análises estratégicas.",
     color: "orange",
-  },
-  {
-    icon: Shield,
-    title: "Segurança de dados e privacidade",
-    description: "Seus dados e dos seus alunos protegidos com criptografia de ponta e conformidade com LGPD.",
-    color: "indigo",
   },
 ];
 
@@ -44,20 +32,10 @@ const colorClasses = {
     icon: "text-green-600",
     accent: "bg-green-600",
   },
-  purple: {
-    bg: "bg-purple-100",
-    icon: "text-purple-600",
-    accent: "bg-purple-600",
-  },
   orange: {
     bg: "bg-orange-100",
     icon: "text-orange-600",
     accent: "bg-orange-600",
-  },
-  indigo: {
-    bg: "bg-indigo-100",
-    icon: "text-indigo-600",
-    accent: "bg-indigo-600",
   },
 };
 
@@ -66,7 +44,7 @@ export function Benefits() {
     <section id="beneficios" className="py-16 md:py-24 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-gray-900 mb-4">
+          <h2 className="text-[rgb(20,67,157)] mb-4 font-[Poppins] text-[32px] font-bold">
             Transforme sua assessoria esportiva digitalmente.
           </h2>
           <p className="text-gray-600">

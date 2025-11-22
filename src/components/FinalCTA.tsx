@@ -14,7 +14,7 @@ export function FinalCTA() {
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="text-center space-y-8">
-          <h2 className="text-white">
+          <h2 className="text-[32px] font-bold text-[#14439D]">
             Pronto para revolucionar sua assessoria esportiva?
           </h2>
           

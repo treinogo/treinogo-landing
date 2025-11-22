@@ -59,7 +59,7 @@ export function Blog({ onReadPost, onViewAll }: BlogProps) {
           <div className="inline-block px-4 py-2 bg-[#1C548B]/10 text-[#1C548B] rounded-full mb-4">
             Blog TreinoGo
           </div>
-          <h3 className="text-gray-900 mb-4">
+          <h3 className="text-[rgb(20,67,157)] mb-4 text-[32px] font-bold font-[Poppins]">
             Pronto para revolucionar sua assessoria esportiva?
           </h3>
           <p className="text-gray-600">
@@ -103,14 +103,14 @@ export function Blog({ onReadPost, onViewAll }: BlogProps) {
                       {post.readTime}
                     </span>
                   </div>
-                  <h3 className="text-gray-900 mb-4">
+                  <h3 className="text-gray-900 mb-4 text-[18px] font-bold">
                     {post.title}
                   </h3>
                   <p className="text-gray-600 mb-6">
                     {post.excerpt}
                   </p>
                   <Button
-                    className="bg-[#1C548B] hover:bg-[#153d68] text-white group w-fit"
+                    className="bg-[rgb(236,99,39)] hover:bg-[#153d68] text-white group w-fit"
                     onClick={() => onReadPost?.(post.id)}
                   >
                     Ler artigo completo
@@ -156,7 +156,7 @@ export function Blog({ onReadPost, onViewAll }: BlogProps) {
                     </span>
                   </div>
 
-                  <h3 className="text-gray-900 mb-3 group-hover:text-[#1C548B] transition-colors">
+                  <h3 className="text-gray-900 mb-3 group-hover:text-[#1C548B] transition-colors text-[18px] font-bold">
                     {post.title}
                   </h3>
 
@@ -166,7 +166,7 @@ export function Blog({ onReadPost, onViewAll }: BlogProps) {
 
                   <Button
                     variant="ghost"
-                    className="text-[#1C548B] hover:text-[#153d68] p-0 h-auto group/btn"
+                    className="text-[#EC6327] hover:text-[#d55520] p-0 h-auto group/btn font-bold"
                     onClick={() => onReadPost?.(post.id)}
                   >
                     Ler mais
@@ -182,46 +182,12 @@ export function Blog({ onReadPost, onViewAll }: BlogProps) {
           <Button
             size="lg"
             variant="outline"
-            className="border-2 border-gray-200 hover:border-[#1C548B] hover:text-[#1C548B]"
+            className="border-2 border-gray-200 hover:border-[#1C548B] hover:text-[#1C548B] bg-[rgb(28,84,130)] text-[rgb(255,255,255)]"
             onClick={onViewAll}
           >
             Ver todos os artigos
             <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-        </div>
-
-        {/* Newsletter CTA */}
-        <div className="mt-16 bg-gradient-to-br from-[#1C548B] to-[#0f3a5f] rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
-          <div className="absolute inset-0 opacity-10">
-            <div
-              className="absolute top-0 left-0 w-full h-full"
-              style={{
-                backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
-                backgroundSize: "40px 40px",
-              }}
-            ></div>
-          </div>
-          <div className="relative z-10 max-w-2xl mx-auto">
-            <h3 className="text-white mb-4">
-              Receba conteúdos exclusivos no seu email
-            </h3>
-            <p className="text-white/90 mb-6">
-              Dicas práticas, estratégias de negócios e tendências do mercado de assessoria esportiva direto na sua caixa de entrada.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="seu@email.com"
-                className="flex-1 px-4 py-3 rounded-lg border-0 focus:outline-none focus:ring-2 focus:ring-white"
-              />
-              <Button className="bg-white text-[#1C548B] hover:bg-gray-100">
-                Inscrever-se
-              </Button>
-            </div>
-            <p className="text-white/90 mt-4">
-              🎁 Ganhe nosso e-book "Guia de Precificação para Assessorias" ao se inscrever
-            </p>
-          </div>
         </div>
       </div>
     </section>

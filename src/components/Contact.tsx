@@ -55,7 +55,7 @@ export function Contact({ onBack }: ContactProps) {
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <div>
-              <h2 className="text-gray-900 mb-6">
+              <h2 className="text-[32px] font-bold text-[#14439D] mb-6">
                 Informações de contato
               </h2>
               <p className="text-gray-600 mb-8">
@@ -146,7 +146,7 @@ export function Contact({ onBack }: ContactProps) {
             {/* Contact Form */}
             <div>
               <div className="bg-white rounded-3xl border-2 border-gray-200 p-8 lg:p-10">
-                <h2 className="text-gray-900 mb-2">
+                <h2 className="text-[32px] font-bold text-[#14439D] mb-2">
                   Envie uma mensagem
                 </h2>
                 <p className="text-gray-600 mb-8">
@@ -240,7 +240,7 @@ export function Contact({ onBack }: ContactProps) {
       <section className="py-16 md:py-24 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-gray-900 mb-4">
+            <h2 className="text-[32px] font-bold text-[#14439D] mb-4">
               Perguntas frequentes
             </h2>
             <p className="text-gray-600">

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Lock, Eye, EyeOff, ArrowRight } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, ArrowRight, ArrowLeft } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Label } from "./ui/label";
@@ -9,9 +9,10 @@ import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png"
 
 interface LoginProps {
   onSignUpClick: () => void;
+  onBack?: () => void;
 }
 
-export function Login({ onSignUpClick }: LoginProps) {
+export function Login({ onSignUpClick, onBack }: LoginProps) {
   const [showPassword, setShowPassword] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,7 +49,7 @@ export function Login({ onSignUpClick }: LoginProps) {
             />
           </div>
           <div className="space-y-6">
-            <h2 className="text-white max-w-lg">
+            <h2 className="text-[32px] font-bold text-[#14439D]">
               Gerencie sua assessoria esportiva com inovação e facilidade
             </h2>
             <p className="text-blue-100 max-w-md">
@@ -75,12 +76,28 @@ export function Login({ onSignUpClick }: LoginProps) {
       {/* Right Side - Login Form */}
       <div className="flex-1 flex items-center justify-center p-6 lg:p-12 bg-white">
         <div className="w-full max-w-md space-y-8">
+          {/* Back Button */}
+          {onBack && (
+            <div className="text-left">
+              <Button
+                type="button"
+                variant="ghost"
+                onClick={onBack}
+                className="text-gray-600 hover:text-gray-900 p-0 h-auto"
+              >
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Voltar para home
+              </Button>
+            </div>
+          )}
+
           {/* Mobile Logo */}
           <div className="lg:hidden text-center">
             <img
               src={logoImage}
               alt="TreinoGo"
-              className="h-10 mx-auto mb-8"
+              className="h-10 mx-auto mb-8 cursor-pointer"
+              onClick={onBack}
             />
           </div>
 

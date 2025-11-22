@@ -128,30 +128,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-
-        {/* Newsletter */}
-        <div className="border-t border-gray-800 pt-8 mb-8">
-          <div className="max-w-md">
-            <h3 className="text-white mb-2">Fique por dentro das novidades</h3>
-            <p className="text-gray-400 mb-4">
-              Receba dicas, atualizações e conteúdos exclusivos para treinadores.
-            </p>
-            <div className="flex gap-2">
-              <div className="relative flex-1">
-                <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-500" />
-                <input
-                  type="email"
-                  placeholder="seu@email.com"
-                  className="w-full pl-10 pr-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:border-blue-500 text-white placeholder-gray-500"
-                />
-              </div>
-              <button className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
-                Inscrever
-              </button>
-            </div>
-          </div>
-        </div>
-
+        
         {/* Bottom bar */}
         <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-gray-400">

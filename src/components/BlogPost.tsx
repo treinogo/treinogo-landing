@@ -445,7 +445,7 @@ export function BlogPost({ postId, onBack, onReadPost }: BlogPostProps) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h2 className="text-gray-900 mb-4">Artigo não encontrado</h2>
+          <h2 className="text-[32px] font-bold text-[#14439D] mb-4">Artigo não encontrado</h2>
           <Button onClick={onBack}>Voltar ao blog</Button>
         </div>
       </div>
@@ -466,7 +466,7 @@ export function BlogPost({ postId, onBack, onReadPost }: BlogPostProps) {
         );
       case "heading":
         return (
-          <h2 key={index} className="text-gray-900 mt-8 mb-4">
+          <h2 key={index} className="text-[32px] font-bold text-[#14439D] mt-8 mb-4">
             {block.text}
           </h2>
         );
@@ -672,7 +672,7 @@ export function BlogPost({ postId, onBack, onReadPost }: BlogPostProps) {
 
         {/* Newsletter CTA */}
         <div className="bg-gradient-to-br from-blue-600 to-purple-600 rounded-3xl p-8 md:p-12 text-center mb-16">
-          <h2 className="text-white mb-4">
+          <h2 className="text-[32px] font-bold text-[#14439D] mb-4">
             Não perca nenhum conteúdo
           </h2>
           <p className="text-blue-100 mb-6 max-w-2xl mx-auto">

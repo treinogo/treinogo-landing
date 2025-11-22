@@ -4,6 +4,7 @@ import { useState } from "react";
 
 interface PricingProps {
   onContactClick?: () => void;
+  onSignUpClick?: () => void;
 }
 
 const plans = [
@@ -59,7 +60,7 @@ const plans = [
   },
 ];
 
-export function Pricing({ onContactClick }: PricingProps) {
+export function Pricing({ onContactClick, onSignUpClick }: PricingProps) {
   const [isYearly, setIsYearly] = useState(false);
 
   const formatPrice = (price: number) => {
@@ -71,10 +72,10 @@ export function Pricing({ onContactClick }: PricingProps) {
   };
 
   return (
-    <section id="precos" className="py-16 md:py-24 bg-gray-50">
+    <section id="precos" className="py-16 md:py-24 bg-[rgb(255,255,255)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-          <h2 className="text-gray-900 mb-4">
+          <h2 className="text-[32px] font-bold text-[#14439D] mb-4">
             Escolha o plano ideal para você
           </h2>
           <p className="text-gray-600 mb-8">
@@ -183,7 +184,7 @@ export function Pricing({ onContactClick }: PricingProps) {
         </div>
 
         {/* Plano Enterprise separado */}
-        <div className="max-w-4xl mx-auto">
+        <div className="w-full">
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 rounded-3xl p-8 md:p-12 text-white relative overflow-hidden">
             <div className="absolute inset-0 opacity-10">
               <div
@@ -191,16 +192,17 @@ export function Pricing({ onContactClick }: PricingProps) {
                 style={{
                   backgroundImage: `radial-gradient(circle at 2px 2px, white 1px, transparent 0)`,
                   backgroundSize: "40px 40px",
+                  width: "100%",
                 }}
               ></div>
             </div>
             
             <div className="relative z-10 grid md:grid-cols-2 gap-8 items-center">
-              <div>
-                <div className="inline-block px-3 py-1 bg-white/10 backdrop-blur-sm rounded-full mb-4">
+              <div className="w-full">
+                <div className="inline-block bg-white/10 backdrop-blur-sm rounded-full mb-4 text-[rgb(0,0,0)] bg-[rgb(255,255,255)] px-[16px] py-[6px]">
                   Mais de 300 alunos?
                 </div>
-                <h3 className="text-white mb-4">
+                <h3 className="text-white mb-4 text-[20px] font-bold">
                   Plano Enterprise
                 </h3>
                 <p className="text-gray-300 mb-6">
@@ -256,9 +258,15 @@ export function Pricing({ onContactClick }: PricingProps) {
         </div>
 
         <div className="mt-12 text-center">
-          <p className="text-gray-600">
-            Todos os planos incluem 14 dias de teste grátis. Cancele quando quiser.
+          <p className="text-gray-600 text-[20px] font-bold font-[Poppins]">
+            Teste gratuitamente com até 9 alunos.
           </p>
+           <Button
+              className="bg-[rgb(236,99,39)] hover:bg-[#153d68] text-white mx-[0px] my-[16px]"
+              onClick={onSignUpClick}
+            >
+              Criar conta grátis
+            </Button>
         </div>
       </div>
     </section>
