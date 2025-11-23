@@ -6,6 +6,7 @@ import { Label } from "./ui/label";
 import { RadioGroup, RadioGroupItem } from "./ui/radio-group";
 import backgroundImage from "figma:asset/d1611b9d124f41b85210b99345ff94882fce3d58.png";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
+import { authService } from "../lib/api";
 
 interface SignUpProps {
   onSuccess: () => void;
@@ -33,6 +34,7 @@ export function SignUp({ onSuccess, onBackToLogin }: SignUpProps) {
   });
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
   // Password validation
   const hasLetter = /[a-zA-Z]/.test(formData.password);
@@ -40,16 +42,33 @@ export function SignUp({ onSuccess, onBackToLogin }: SignUpProps) {
   const hasSpecialChar = /[!@#$%^&*(),.?":{}|<>]/.test(formData.password);
   const isPasswordValid = hasLetter && hasNumber && hasSpecialChar && formData.password.length >= 8;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!isPasswordValid) return;
-    
+
     setIsLoading(true);
-    // Simulate API call
-    setTimeout(() => {
+    setError("");
+
+    try {
+      const role = userType === "trainer" ? "COACH" : "ATHLETE";
+      const { user } = await authService.register({
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
+        role
+      });
+
+      // Cookie is automatically set by backend
+
+      if (userType === "trainer") {
+        onSuccess();
+      } else {
+        authService.redirectToApp(user.role);
+      }
+    } catch (err: any) {
+      setError(err.message || "Erro ao criar conta. Tente novamente.");
       setIsLoading(false);
-      onSuccess();
-    }, 1500);
+    }
   };
 
   const handleNext = () => {

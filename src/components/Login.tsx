@@ -6,6 +6,7 @@ import { Label } from "./ui/label";
 import { Separator } from "./ui/separator";
 import backgroundImage from "figma:asset/d1611b9d124f41b85210b99345ff94882fce3d58.png";
 import logoImage from "figma:asset/d059ada69412c7772cd20303e3b8bc32944a7030.png";
+import { authService } from "../lib/api";
 
 interface LoginProps {
   onSignUpClick: () => void;
@@ -17,15 +18,24 @@ export function Login({ onSignUpClick, onBack }: LoginProps) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // Simulate login
-    setTimeout(() => {
+    setError("");
+
+    try {
+      const { user } = await authService.login(email, password);
+
+      console.log('✅ Login successful! User:', user);
+
+      // Cookie is automatically set by backend
+      authService.redirectToApp(user.role);
+    } catch (err: any) {
+      setError(err.message || "Erro ao fazer login. Verifique suas credenciais.");
       setIsLoading(false);
-      console.log("Login attempt:", { email, password });
-    }, 1500);
+    }
   };
 
   const handleGoogleLogin = () => {
@@ -151,6 +161,12 @@ export function Login({ onSignUpClick, onBack }: LoginProps) {
 
           {/* Login Form */}
           <form onSubmit={handleLogin} className="space-y-5">
+            {error && (
+              <div className="p-3 bg-red-50 border border-red-200 rounded-md">
+                <p className="text-red-800 text-sm">{error}</p>
+              </div>
+            )}
+
             <div className="space-y-2">
               <Label htmlFor="email" className="text-gray-700">
                 Email
